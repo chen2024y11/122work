@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+    <script>
+        function add (dateStr,timeObj) {
+            var date = new Date(dateStr);
+            var millisecond = {
+                'day' : 86400000,
+                'week' : 604800000,
+                'hour' : 3600000,
+                'minute' : 60000,
+                'second' : 1000,
+                'millisecond' : 1
+            };
+            if(timeObj.months || timeObj.month || timeObj.m) {
+                date.setMonth(date.getMonth() + (timeObj.months || timeObj.month ||timeObj.m))
+            }
+            if(timeObj.years || timeObj.year || timeObj.y) {
+                date.setFullYear(date.getFullYear() + (timeObj.years || timeObj.year ||timeObj.y))
+            }
+            for (let unit in timeObj) {
+                if (millisecond[unit.toLowerCase()]) {
+                    let amount = timeObj[unit];
+                    if (typeof amount === 'string' && !isNaN(amount)) {
+                        amount = parseFloat(amount);
+                    }
+                    if (millisecondp[unit.toLowerCase()] !== 0) {
+                        date.setTime(date.getTime() + amount * millisecond[unit.toLowerCase()]);
+                    }
+                }
+            }
+            return date.toISOString();
+        }
+
+        console.log(add(9,"day"));
+    </script>
+</html>

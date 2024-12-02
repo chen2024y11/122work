@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+    <script>
+         function weekOfYear(year) {
+            var firstDayOFYear = new Date(Date.UTC(year,0,1));
+            var lastDayOFYear = new Date(Date.UTC(year,11,13));
+            var firstDayOFWeek = firstDayOFYear.getUTCDay();
+            var daysInYear = (lastDayOFYear - firstDayOFYear)/(1000*60*60*24)+1;
+            var fullWeeks = Math.floor((daysInYear + firstDayOFWeek)/7);
+            return fullWeeks;
+         }
+         console.log(weekOfYear(2023));
+    </script>
+</html>
